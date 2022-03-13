@@ -1,0 +1,15 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+
+{% block content %}
+	<form method="POST">
+		{% csrf_token %}
+		{{formset.management_form}}
+		<!---brcause of loop rendering the form!-->
+		{% for form in formset %}
+			{{form}}
+			<hr>
+		{% endfor %}
+		<input type="submit" name="submit" value="submit">
+	</form>
+{% endblock %}
